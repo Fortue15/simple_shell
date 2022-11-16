@@ -12,7 +12,7 @@ int _myexit(info_t *info)
 
 	if (info->argv[1])  /* If there is an exit arguement */
 	{
-		exitcheck = _erratoi(info->argv[1]);										
+		exitcheck = _erratoi(info->argv[1]);
 		if (exitcheck == -1)
 		{
 			info->status = 2;
@@ -62,7 +62,8 @@ int _mycd(info_t *info)
 			return (1);
 		}
 		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
-		chdir_ret = /* TODO: what should this be? */																chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");	
+		chdir_ret = /* TODO: what should this be? */
+			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
 		chdir_ret = chdir(info->argv[1]);
@@ -78,13 +79,12 @@ int _mycd(info_t *info)
 		_setenv(info, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
-
 }
 
 /**
  * _myhelp - changes the current directory of the process
- * @info: Structure containing potential arguments. Used to maintain
- * constant function prototype.
+ * @info: Structure containing potential arguments.
+ * Used to maintain constant function prototype.
  *
  * Return: Always 0
  */

@@ -1,10 +1,9 @@
 #include "shell.h"
 
 /**
- *
  * get_environ - returns the string array copy of our environ
- * @info: Structure containing potential arguments. Used to maintain
- * constant function prototype.
+ * @info: Structure containing potential arguments.
+ * Used to maintainconstant function prototype.
  *
  * Return: Always 0
  */
@@ -31,9 +30,10 @@ int _unsetenv(info_t *info, char *var)
 	list_t *node = info->env;
 	size_t i = 0;
 	char *p;
+
 	if (!node || !var)
 		return (0);
-	
+
 	while (node)
 	{
 		p = starts_with(node->str, var);

@@ -23,7 +23,8 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 #else
 		r = _getline(info, buf, &len_p);
 #endif
-		if (r > 0)																			{
+		if (r > 0)
+		{
 			if ((*buf)[r - 1] == '\n')
 			{
 				(*buf)[r - 1] = '\0'; /* remove trailing newline */
@@ -71,7 +72,7 @@ ssize_t get_input(info_t *info)
 				break;
 			j++;
 		}
-		
+
 		i = j + 1; /* increment past nulled ';'' */
 		if (i >= len) /* reached end of buffer? */
 		{
@@ -96,7 +97,7 @@ ssize_t get_input(info_t *info)
 ssize_t read_buf(info_t *info, char *buf, size_t *i)
 {
 	ssize_t r = 0;
-	
+
 	if (*i)
 		return (0);
 	r = read(info->readfd, buf, READ_BUF_SIZE);
@@ -120,7 +121,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	size_t k;
 	ssize_t r = 0, s = 0;
 	char *p = NULL, *new_p = NULL, *c;
-	
+
 	p = *ptr;
 	if (p && length)
 		s = *length;
@@ -140,17 +141,18 @@ int _getline(info_t *info, char **ptr, size_t *length)
 		_strncat(new_p, buf + i, k - i);
 	else
 		_strncpy(new_p, buf + i, k - i + 1);
-	
+
 	s += k - i;
 	i = k;
 	p = new_p;
-	
+
 	if (length)
-		*length = s;																		*ptr = p;
+		*length = s;
+	*ptr = p;
 	return (s);
 }
 
-/** 
+/**
  * sigintHandler - blocks ctrl-C
  * @sig_num: the signal number
  *
